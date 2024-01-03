@@ -17,6 +17,6 @@ console.log(square(5)); //Output: 25
 
 - String Templating, ES6 introduces template literals, allowing the embedding of expressions within string literals using backticks ('`') providing a more readable and concise way to create strings with variables and expressions.
 
-- Object Creation in ES6, simplifies abject creation with concise sytaanx for defining properties and methods, making it more intuitive and reducing boilerplate code, particularly with the introduction of classes for object-oriented programming.
+- Object Creation in ES6, simplifies object creation with concise sytaanx for defining properties and methods, making it more intuitive and reducing boilerplate code, particularly with the introduction of classes for object-oriented programming.
 
 - Iterators and for/of loops, allowing objects to define their iteration behavior and the 'for/of' loop for easily iterating over iterable objects liek arrays, improving the handling of collections and sequences in JS.
