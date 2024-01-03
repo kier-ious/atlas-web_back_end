@@ -11,11 +11,11 @@ console.log(square(5)); //Output: 25
 
 - Block-Scoped Variables, while using 'let' and 'const', limiting the variables scope to the block, statement, or expression in which it is defines, improving code maintainability and reducing unintended side effects.
 
-- Arrow functions, provide a concise syntax for writing functions with implicit return for one-line expressions and automatically inferting the 'this' value from the surrounding scope, making them particularly useful for callback fucntions and improving code readability.
+- Arrow functions, provide a concise syntax for writing functions with implicit return for one-line expressions and automatically inherting the 'this' value from the surrounding scope, making them particularly useful for callback fucntions and improving code readability.
 
 - Rest and Spread Parameters, the *rest* parameter('...') allows functions to accept an indefinite number of arguments as an array, while the *spread* operator is used to spread elements of an iterable (like an array) into another array or function call, enhancing flexibility in funciton definition and calls.
 
-- String Templating, ES^ introduces template literals, allowing the embedding of expressions within string literals using backticks ('`') providing a more readable and concise way to create strings with variables and expressions.
+- String Templating, ES6 introduces template literals, allowing the embedding of expressions within string literals using backticks ('`') providing a more readable and concise way to create strings with variables and expressions.
 
 - Object Creation in ES6, simplifies abject creation with concise sytaanx for defining properties and methods, making it more intuitive and reducing boilerplate code, particularly with the introduction of classes for object-oriented programming.
 
