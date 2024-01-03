@@ -19,4 +19,4 @@ console.log(square(5)); //Output: 25
 
 - Object Creation in ES6, simplifies object creation with concise sytaanx for defining properties and methods, making it more intuitive and reducing boilerplate code, particularly with the introduction of classes for object-oriented programming.
 
-- Iterators and for/of loops, allowing objects to define their iteration behavior and the 'for/of' loop for easily iterating over iterable objects liek arrays, improving the handling of collections and sequences in JS.
+- Iterators and for/of loops, allowing objects to define their iteration behavior and the 'for/of' loop for easily iterating over iterable objects like arrays, improving the handling of collections and sequences in JS.
