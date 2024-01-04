@@ -1,5 +1,5 @@
 export default function createEmployeesObject(departmentName, employees) {
-  const createEmployeesObjectmployeesObject = {};
+  const createEmployeesObject = {};
   createEmployeesObject[departmentName] = employees;
 
   return createEmployeesObject;
