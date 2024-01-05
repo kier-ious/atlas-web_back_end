@@ -4,19 +4,14 @@ export default class Airport {
     this._code = code;
   }
 
-  // Getter for SIZE
+  // Getter for NAME
   get name() {
     return this._name;
   }
 
-  // Getter for LOCATION
+  // Getter for CODE
   get code() {
     return this._code;
-  }
-
-  // Cast NUMBER
-  valueOf() {
-    return this._name;
   }
 
   // Cast to STRING
