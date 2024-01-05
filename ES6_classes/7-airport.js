@@ -1,26 +1,26 @@
 export default class Airport {
-  constructor(size, location) {
-    this._size = size;
-    this._location = location;
+  constructor(name, code) {
+    this._name = name;
+    this._code = code;
   }
 
   // Getter for SIZE
-  get size() {
-    return this._size;
+  get name() {
+    return this._name;
   }
 
   // Getter for LOCATION
-  get location() {
-    return this._location;
+  get code() {
+    return this._code;
   }
 
   // Cast NUMBER
   valueOf() {
-    return this._size;
+    return this._name;
   }
 
   // Cast to STRING
   toString() {
-    return this._location;
+    return this._code;
   }
 }
