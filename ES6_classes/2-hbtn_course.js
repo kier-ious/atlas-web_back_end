@@ -9,23 +9,27 @@ class HolbertonCourse {
   get name() {
     return this._name;
   }
+
   set name(newName) {
-    this._name = this.validateString(newName, 'name');
+    this._name = (newName);
   }
 
   // Getter and Setter for length
   get length() {
     return this._length;
   }
+
   set length(newLength) {
-    this._length = this.validateNumber(newLength, 'length');
+    this._length = (newLength);
   }
 
   // Getter and Setter for students
   get students() {
     return this._students;
   }
+
   set students(newStudents) {
-    this._students = this.validateStudents(newStudents, 'students');
+    this._students = (newStudents);
   }
+
 }
