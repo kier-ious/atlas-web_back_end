@@ -14,7 +14,7 @@ export default class Airport {
     return this._code;
   }
 
-  // Cast to STRING
+  // Default string description
   toString() {
     return this._code;
   }
