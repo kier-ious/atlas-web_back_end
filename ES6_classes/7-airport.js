@@ -1,4 +1,4 @@
-export default class HolbertonClass {
+export default class Airport {
   constructor(size, location) {
     this._size = size;
     this._location = location;
