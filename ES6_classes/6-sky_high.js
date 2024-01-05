@@ -13,6 +13,6 @@ export default class SkyHighBuilding extends Building {
 
   // Override evacuationWarningMessage method
   evacuationWarningMessage() {
-    return `Evacute slowly the ${this._floors} floors.`;
+    return `Evacuate slowly the ${this._floors} floors.`;
   }
 }
