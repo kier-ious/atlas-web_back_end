@@ -1,4 +1,4 @@
-class HolbertonCourse {
+export default class HolbertonCourse {
   constructor(name, length, students) {
     this._name = this.validateString(name, 'name');
     this._length = this.validateNumber(length, 'length');
