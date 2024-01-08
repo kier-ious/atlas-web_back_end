@@ -1,6 +1,4 @@
-import getListStudents from './0-get_list_students';
-
-export default function updateStudentGradeByCity(students) {
+export default function updateStudentGradeByCity(students, city) {
   const filterStudents = students.filter((student) => student.location === city);
   const updatedStudents = filterStudents.map((student) => {
     const gradeObj = newGrades.find((grade) => grade.studentId === student.id);
