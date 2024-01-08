@@ -8,3 +8,5 @@ export default function getStudentsByLocation(students, city) {
 const city = 'San Francisco';
 const students = getListStudents();
 const studentsInCity = getStudentsByLocation(students, city);
+
+console.log(studentsInCity);
