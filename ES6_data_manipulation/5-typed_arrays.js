@@ -5,7 +5,7 @@ export default function createInt8TypedArray(length, position, value) {
 
   const buffer = new ArrayBuffer(length);
   const Int8 = new Int8Array(buffer);
-  Int8Array[position] = value;
+  Int8[position] = value;
 
   return buffer;
 }
