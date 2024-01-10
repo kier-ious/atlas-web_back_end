@@ -1,4 +1,4 @@
-export default function getResponseFromAPI() {
+export default function getResponseFromAPI(fakeTimer) {
   return new Promise((resolve, reject) => {
     fakeTimer(() => {
       const success = true;
