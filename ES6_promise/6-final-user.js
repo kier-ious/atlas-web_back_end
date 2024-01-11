@@ -9,6 +9,6 @@ export default async function handleProfileSignup(firstName, lastName, fileName)
 
   return results.map((results) => ({
     status: result.status,
-    value: results.value || result.reason
+    value: result.value || result.reason,
   }));
 }
