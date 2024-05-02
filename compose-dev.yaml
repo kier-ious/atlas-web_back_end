@@ -1,0 +1,18 @@
+services:
+  app:
+    entrypoint:
+    - sleep
+    - infinity
+    image: docker/dev-environments-javascript:stable-1
+    init: true
+    volumes:
+    - type: bind
+      source: /var/run/docker.sock
+      target: /var/run/docker.sock
+
+  python:
+    image: python:3.9
+    command: tail -f /dev/null
+    volumes:
+      - .:/app
+    working_dir: /app
