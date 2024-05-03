@@ -15,6 +15,7 @@ async def measure_runtime() -> float:
     """
     start_time = asyncio.get_event_loop().time()
 
+    # Execute prev mod 4 times in parallel using asyncio.gather
     await asyncio.gather(
         async_comprehension(),
         async_comprehension(),
