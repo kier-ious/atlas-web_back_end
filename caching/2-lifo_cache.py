@@ -12,7 +12,6 @@ class LIFOCache(BaseCaching):
         self.stack = []
         self.size = 0
 
-
     def put(self, key, item):
         """Adds or updates item in cache
         Args:
