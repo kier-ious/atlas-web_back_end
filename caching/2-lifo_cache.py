@@ -24,9 +24,9 @@ class LIFOCache(BaseCaching):
 
         if self.size >= self.MAX_ITEMS:
             """If cache full kick first item out"""
-            trash_key = self.stack.pop(0)
-            del self.cache_data[trash_key]
-            print("DISCARD:", trash_key)
+            old_key = self.stack.pop(0)
+            del self.cache_data[old_key]
+            print("DISCARD:", old_key)
             self.size -= 1
 
         self.cache_data[key] = item
