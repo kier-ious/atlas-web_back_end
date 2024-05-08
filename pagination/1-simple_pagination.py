@@ -42,8 +42,10 @@ class Server:
         assert isinstance(page, int) and page > 0, "page must be pos int"
         assert isinstance(page_size, int) and page_size > 0, "page_size ("")"
 
+        # Find start and end indices using prev function (index_range)
         start_index, end_index = index_range(page, page_size)
 
+        # Retrieves the dataset
         dataset = self.dataset()
 
         return dataset[start_index:end_index]
