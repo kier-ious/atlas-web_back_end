@@ -31,6 +31,7 @@ class MRUCache(BaseCaching):
 
         self.cache_data[key] = item
         self.usage_history.append(key)
+        self.size += 1
 
     def get(self, key):
         """Retrieves item from cache"""
