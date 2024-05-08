@@ -32,7 +32,6 @@ class MRUCache(BaseCaching):
         self.cache_data[key] = item
         self.usage_history.append(key)
 
-
     def get(self, key):
         """Retrieves item from cache"""
         if key in self.cache_data:
