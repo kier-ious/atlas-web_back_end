@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""(LRU Caching)Create a class LRUCache that inherits from BaseCaching and is a caching system"""
+"""(LRU Caching)Create a class LRUCache that inherits from BaseCaching
+and is a caching system"""
 
 from base_caching import BaseCaching
 
@@ -23,7 +24,7 @@ class LRUCache(BaseCaching):
 
         if self.size >= self.MAX_ITEMS:
             """If the cache is full kick out least used item"""
-            old_key = self.usage_history.pop(0)
+            old_key = self.usage_history.pop()
             del self.cache_data[old_key]
             print("DISCARD:", old_key)
             self.size -= 1
