@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import csv
-import math
 from typing import List
 
 """Simple pagination"""
@@ -9,7 +8,15 @@ from typing import List
 def index_range(page: int, page_size: int) -> tuple:
     """Return a tuple of size two containing a start index and an end
     index corresponding to the range of indexes to return in a list for
-    those particular pagination parameters."""
+    those particular pagination parameters.
+
+    Args:
+        page: the page number
+        page_size: the number of items per page
+
+    Returns:
+        tuple: A tuple containing the start and end indices
+    """
     # Caluclate the start of the index of current page
     start_index = (page - 1) * page_size
     # Caluclate the end " "
@@ -20,14 +27,21 @@ def index_range(page: int, page_size: int) -> tuple:
 
 class Server:
     """Server class to paginate a database of popular baby names.
+
+    Attributes:
+        DATA_FILE: the path to the dataset file (csv)
     """
     DATA_FILE = "Popular_Baby_Names.csv"
 
     def __init__(self):
+        """Intitalizes the server w/ dataset attr"""
         self.__dataset = None
 
     def dataset(self) -> List[List]:
-        """Cached dataset
+        """Return the cached dataset
+
+        Returns:
+            List[List]: the dataset
         """
         if self.__dataset is None:
             with open(self.DATA_FILE) as f:
@@ -38,7 +52,15 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        """Return the appropriate page of the dataset"""
+        """Return the appropriate page of the dataset
+
+        Args:
+            page: the page number, default is 1
+            page_size: the number of items per page, default is 10
+
+        Returns:
+            List[List]: the requested page of the dataset
+        """
         assert isinstance(page, int) and page > 0, "page must be pos int"
         assert isinstance(page_size, int) and page_size > 0, "page_size ("")"
 
