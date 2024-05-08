@@ -24,7 +24,7 @@ class LRUCache(BaseCaching):
 
         if self.size >= self.MAX_ITEMS:
             """If the cache is full kick out least used item"""
-            old_key = self.usage_history.pop()
+            old_key = self.usage_history.pop(0)
             del self.cache_data[old_key]
             print("DISCARD:", old_key)
             self.size -= 1
