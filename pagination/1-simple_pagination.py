@@ -2,7 +2,9 @@
 import csv
 from typing import List
 
-"""Simple pagination"""
+"""Implement a method named get_page that takes two integer arguments page with
+default value 1 and page_size with default value 10.
+"""
 
 
 def index_range(page: int, page_size: int) -> tuple:
