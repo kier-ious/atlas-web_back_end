@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-import csv
-from typing import List
-
 """Implement a method named get_page that takes two integer arguments page with
 default value 1 and page_size with default value 10.
 """
+import csv
+from typing import List
 
 
 def index_range(page: int, page_size: int) -> tuple:
