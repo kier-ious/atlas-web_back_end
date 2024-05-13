@@ -84,14 +84,23 @@ class Server:
         Returns:
             dict: dict containing pagination
         """
-        assert isinstance(page, int) and page > 0, "page must be pos int"
-        assert isinstance(page_size, int) and page_size > 0, "page_size ("")"
+        data = self.get_page(page, page_size)
 
-        """Find start and end indices using prev function (index_range)"""
-        start_index, end_index = index_range(page, page_size)
+        # Calculate total number of pages
+        total_pages: int = math.ceil(len(self.__dataset) / page_size)
 
-        """Retrieves the dataset"""
-        dataset = self.dataset()
+        # Calculate next page number
+        next_page = page + 1 if page < total_pages else None
 
-        """Return correct page of dataset based on start and end"""
-        return dataset[start_index:end_index]
+        # Calculate prev page number
+        prev_page = page - 1 if page < total_pages else None
+
+        """Return dictionary with pagination info"""
+        return {
+            "page_size": page_size,
+            "page": page,
+            "data": data,
+            "next_page": next_page,
+            "prev_page": prev_page,
+            "total_pages": total_pages
+        }
