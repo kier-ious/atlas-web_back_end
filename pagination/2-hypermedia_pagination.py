@@ -95,6 +95,10 @@ class Server:
         # Calculate prev page number
         prev_page = page - 1 if page < total_pages else None
 
+        # For 1st page, set prev to None
+        if page == 1:
+            prev_page = None
+
         """Return dictionary with pagination info"""
         return {
             "page_size": page_size,
