@@ -2,7 +2,6 @@
 """
 Deletion-resilient hypermedia pagination
 """
-
 import csv
 import math
 from typing import List, Dict
@@ -45,16 +44,16 @@ class Server:
         indexed_dataset = self.indexed_dataset()
         num_items = len(indexed_dataset)
 
-        # Ensure index is w/in set valid range
+        """Ensure index is w/in set valid range"""
         if index is not None:
             assert index < num_items, f"index
             {index} is out of range(total items: {num_items})"
 
-        #  Find next index to query w/
+        """Find next index to query w/"""
         next_index = min(
             index + page_size, num_items) if index is not None else page_size
 
-        # Retrieve data from the current page
+        """Retrieve data from the current page"""
         data = [indexed_dataset[i] for i in range(index, next_index)]
 
         return {
