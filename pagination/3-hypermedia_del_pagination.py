@@ -46,8 +46,9 @@ class Server:
 
         """Ensure index is w/in set valid range"""
         if index is not None:
-            assert index < num_items, f"index
-            {index} is out of range(total items: {num_items})"
+            assert index < num_items, (
+                f"index {index} is out of range(total items: {num_items})"
+            )
 
         """Find next index to query w/"""
         next_index = min(
