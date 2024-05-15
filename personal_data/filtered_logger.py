@@ -5,6 +5,8 @@ that returns the log message obfuscated"""
 import re
 from typing import List
 import logging
+import os
+import mysql.connector
 
 
 PII_FIELDS = ("name", "email", "phone", "ssn", "password")
@@ -72,3 +74,22 @@ def get_logger() -> logging.Logger:
     logger.addHandler(stream_handler)
 
     return logger
+
+
+def get_db() -> mysql.connector.connection.MySQLConnection:
+    """Connects to secure DB and returns a MySQLConnection object"""
+    """Get DB credentials from env vars"""
+    PERSONAL_DATA_DB_USERNAME = os.environ.get("PERSONAL_DATA_DB_USERNAME", "root")
+    PERSONAL_DATA_DB_PASSWORD = os.environ.get("PERSONAL_DATA_DB_PASSWORD", "")
+    PERSONAL_DATA_DB_HOST = os.environ.get("PERSONAL_DATA_DB_HOST", "localhost")
+    PERSONAL_DATA_DB_NAME = os.environ.get("PERSONAL_DATA_DB_NAME", "")
+
+    """Connection to mySQL DB"""
+    db = mysql.connector.connection{
+        username=PERSONAL_DATA_DB_USERNAME,
+        password=PERSONAL_DATA_DB_PASSWORD,
+        host=PERSONAL_DATA_DB_HOST,
+        database=PERSONAL_DATA_DB_NAME
+    }
+
+    return db
