@@ -85,11 +85,11 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
     PERSONAL_DATA_DB_NAME = os.environ.get("PERSONAL_DATA_DB_NAME", "")
 
     """Connection to mySQL DB"""
-    db = mysql.connector.connection{
-        username=PERSONAL_DATA_DB_USERNAME,
+    db = mysql.connector.connect(
+        user=PERSONAL_DATA_DB_USERNAME,
         password=PERSONAL_DATA_DB_PASSWORD,
         host=PERSONAL_DATA_DB_HOST,
         database=PERSONAL_DATA_DB_NAME
-    }
+    )
 
     return db
