@@ -95,3 +95,27 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
     )
 
     return db
+
+
+def main():
+    """The function will obtain a database connection using
+    get_db and retrieve all rows in the users table and display
+    each row under a filtered format like this"""
+    logger = get_logger()
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM users;")
+    for row in cursor.fetchall():
+        """Made filtered dictionary when sensitive info is replaced
+        by ***"""
+        filtered_row = {
+            field: "***" if field in PII_FIELDS else value
+            for field, value in zip(cursor.description, row)
+        }
+        """Convert about dict into formatted str"""
+        formatted_row = "; ".join(
+            [f"{key}={value}" for key, value in filtered_row.items()])
+        """Log the new formatted row with logger object"""
+        logger.info(formatted_row)
+    cursor.close()
+    db.close()
