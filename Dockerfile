@@ -1,6 +1,5 @@
 FROM ubuntu:20.04
 WORKDIR /app
-ENV GITHUB_TOKEN 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@
 ENV TZ=America/Chicago
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update --fix-missing
