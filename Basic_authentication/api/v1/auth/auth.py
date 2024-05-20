@@ -9,6 +9,8 @@ class Auth():
     """This class is the template for
     all authentication system you will implement."""
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
+        """eturns False - path and excluded_paths will be used
+        later, now, you don’t need to take care of them"""
         return False
 
     def authorization_header(self, request=None) -> str:
