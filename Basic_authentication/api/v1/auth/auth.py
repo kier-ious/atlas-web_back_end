@@ -14,8 +14,8 @@ class Auth():
         later, now, you don’t need to take care of them"""
         if path is None:
             return True
-        if not excluded_paths:
-            return False
+        if excluded_paths == [] or excluded_paths is None:
+            return True
         normalized_path = path if path.endswith('/') else path + '/'
         for excl_path in excluded_paths:
             normalized_excl_path = excl_path \
