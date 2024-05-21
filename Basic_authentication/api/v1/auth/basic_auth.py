@@ -12,7 +12,7 @@ class BasicAuth(Auth):
         """Returns the Base64 part of Auth header for BasicAuth"""
         if authorization_header is None or \
             not isinstance(authorization_header, str) or \
-            not authorization_header.startswith('Basic '):
-                return None
+                not authorization_header.startswith('Basic '):
+            return None
 
         return authorization_header.split(' ')[1]
