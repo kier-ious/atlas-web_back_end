@@ -40,3 +40,8 @@ class Auth():
     def current_user(self, request=None) -> TypeVar('User'):
         """Returns None-request will be the flask request object"""
         return None
+
+
+class BasicAuth(Auth):
+    """Child class inheriting from parent, currently empty"""
+    pass
