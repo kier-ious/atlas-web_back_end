@@ -26,7 +26,16 @@ class Auth():
 
     def authorization_header(self, request=None) -> str:
         """Returns none-request will be flask request object"""
-        return None
+        if request is None:
+            """If there's no request object, give'm a NONE"""
+            return None
+
+        if 'Authorization' not in request.headers:
+            """If 'Auth; header not found, give'm a NONE"""
+            return None
+
+        """If the 'Auth' header IS present, return value"""
+        return request.headers['Authorization']
 
     def current_user(self, request=None) -> TypeVar('User'):
         """Returns None-request will be the flask request object"""
