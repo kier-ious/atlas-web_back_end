@@ -32,6 +32,7 @@ class User:
 
     @staticmethod
     def load_from_file():
+        """Passsing for now"""
         pass
 
 @app_views.route('/api/v1/users/me', methods=['GET'], strict_slashes=False)
