@@ -26,7 +26,7 @@ def login():
         return jsonify({"error": "no user for that email"}), 404
 
     user = user[0]
-    if not user.is_valid_password(password):
+    if not User.is_valid_password(password):
         return jsonify({"error": "wrong password"}), 401
 
     session_id = auth.create_session(user.id)
