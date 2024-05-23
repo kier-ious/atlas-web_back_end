@@ -4,56 +4,8 @@
 from api.v1.views import app_views
 from flask import abort, jsonify, request
 from api.v1.auth.auth import Auth
+from models.user import User
 
-
-class User:
-    def __init__(self, email, password, first_name=None, last_name=None):
-        """Initializing the user info"""
-        self.email = email
-        self.password = password
-        self.first_name = first_name
-        self.last_name = last_name
-
-    def to_dict(self):
-        """Creating a dictionary for user info"""
-        return {
-            'email': self.email,
-            'password': self.password,
-            'first_name': self.first_name,
-            'last_name': self.last_name
-        }
-
-    @staticmethod
-    def get(user_id, users):
-        """Logic for retrieving a user by ID from a data source"""
-        for user in users:
-            if user.id == user_id:
-                return user
-        return None
-
-    @staticmethod
-    def load_from_file():
-        """Passsing for now"""
-        pass
-
-@app_views.route('/api/v1/users/me', methods=['GET'], strict_slashes=False)
-def get_authenticated_user():
-    if request.current_user is None:
-        abort(404)
-    return jsonify(request.current_user.to_dict())
-
-@app_views.route('/api/v1/users/<user_id>', methods=['GET'], strict_slashes=False)
-def get_user(user_id):
-    """Retrieves user by it's user_id"""
-    if user_id == 'me':
-        if request.current_user is None:
-            abort(404)
-        return jsonify(request.current_user.to_dict())
-
-    user = User.get(user_id)
-    if user is None:
-        abort(404)
-    return jsonify(user.to_dict())
 
 @app_views.route('/users', methods=['GET'], strict_slashes=False)
 def view_all_users() -> str:
@@ -76,10 +28,11 @@ def view_one_user(user_id: str = None) -> str:
     """
     if user_id is None:
         abort(404)
-    user = User.get(user_id)
-    if user is None:
-        abort(404)
-    return jsonify(user.to_json())
+    if user_id == 'me':
+        if request.current_user is None:
+            abort (404)
+        else:
+            return jsonify(request.current_user.to_json())
 
 
 @app_views.route('/users/<user_id>', methods=['DELETE'], strict_slashes=False)
