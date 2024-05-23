@@ -59,6 +59,9 @@ def before_request():
         if auth.authorization_header(request) is None:
             """Returns None - request will be the Flask request object"""
             abort(401)
+        if auth.session_cookie(request) is None:
+            """Returns None - request will be the Flask request object"""
+            abort(401)
         if auth.current_user(request) is None:
             """Returns None - request will be the Flask request object"""
             abort(403)
