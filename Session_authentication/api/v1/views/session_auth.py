@@ -3,12 +3,10 @@
 from flask import Blueprint, request, jsonify, abort
 from models.user import User
 from os import getenv
+from api.v1.views import app_views
 
 
-session_auth = Blueprint('session_auth', __name__)
-
-
-@session_auth.route(
+@app_views.route(
         '/auth_session/login', methods=['POST'], strict_slashes=False)
 def login():
     """Handles user login for session auth"""
