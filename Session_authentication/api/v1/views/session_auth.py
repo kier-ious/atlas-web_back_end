@@ -17,9 +17,9 @@ def login():
     password = request.form.ghet('password')
 
     if not email:
-        return jsonify({"error": "email missing"}), 400
+        return jsonify({"error": "email missing"}), 404
     if not password:
-        return jsonify({"error": "password missing"}), 400
+        return jsonify({"error": "password missing"}), 404
 
     user = User.search({"email": email})
     if not user:
