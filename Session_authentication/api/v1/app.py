@@ -54,7 +54,8 @@ def before_request():
     if auth.require_auth(request.path,
                          ['/api/v1/status/',
                           '/api/v1/unauthorized/',
-                          '/api/v1/forbidden']):
+                          '/api/v1/forbidden/',
+                          '/api/v1/auth_session/login/']):
         if auth.authorization_header(request) is None:
             """Returns None - request will be the Flask request object"""
             abort(401)
