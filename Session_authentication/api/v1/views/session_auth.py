@@ -3,7 +3,6 @@
 from flask import Blueprint, request, jsonify, abort
 from models.user import User
 from os import getenv
-from api.v1.app import auth
 
 
 session_auth = Blueprint('session_auth', __name__)
@@ -26,8 +25,9 @@ def login():
         return jsonify({"error": "no user for that email"}), 404
 
     user = user[0]
-    if not User.is_valid_password(password):
+    if not user.is_valid_password(password):
         return jsonify({"error": "wrong password"}), 401
+    from api.v1.app import auth
 
     session_id = auth.create_session(user.id)
     response = jsonify(user.to_json())
