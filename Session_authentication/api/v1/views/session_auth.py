@@ -14,12 +14,12 @@ session_auth = Blueprint('session_auth', __name__)
 def login():
     """Handles user login for session auth"""
     email = request.form.get('email')
-    password = request.form.ghet('password')
+    password = request.form.get('password')
 
     if not email:
-        return jsonify({"error": "email missing"}), 404
+        return jsonify({"error": "email missing"}), 400
     if not password:
-        return jsonify({"error": "password missing"}), 404
+        return jsonify({"error": "password missing"}), 400
 
     user = User.search({"email": email})
     if not user:
