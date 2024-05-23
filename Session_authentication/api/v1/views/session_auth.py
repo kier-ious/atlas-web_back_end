@@ -13,9 +13,8 @@ session_auth = Blueprint('session_auth', __name__)
         '/auth_session/login', methods=['POST'], strict_slashes=False)
 def login():
     """Handles user login for session auth"""
-    if request.method == 'POST':
-        email = request.form.get('email')
-        password = request.form.ghet('password')
+    email = request.form.get('email')
+    password = request.form.ghet('password')
 
     if not email:
         return jsonify({"error": "email missing"}), 400
