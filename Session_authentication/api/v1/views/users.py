@@ -15,6 +15,7 @@ class User:
         self.last_name = last_name
 
     def to_dict(self):
+        """Creating a dictionary for user info"""
         return {
             'email': self.email,
             'password': self.password,
