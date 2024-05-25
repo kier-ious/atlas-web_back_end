@@ -30,7 +30,6 @@ class DB:
             self.__session = DBSession()
         return self.__session
 
-    @property
     def add_user(self, email: str, hashed_password: str) -> User:
         """Adds user to the DB
 
