@@ -41,7 +41,7 @@ class DB:
         new_user = User(email=email, hashed_password=hashed_password)
         """Add user to session"""
         session = self._session
-        
+
         session.add(new_user)
 
         session.commit()
