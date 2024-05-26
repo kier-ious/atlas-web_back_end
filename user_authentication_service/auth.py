@@ -19,9 +19,13 @@ class Auth:
     @staticmethod
     def _hash_password(password: str) -> bytes:
         """Returns bytes in a salty hash of input PW"""
-        hashed_password = bcrypt.hashpw(password.encode(
-            'utf-8'), bcrypt.gensalt())
-        return hashed_password
+        try:
+            hashed_password = bcrypt.hashpw(password.encode(
+                'utf-8'), bcrypt.gensalt())
+            return hashed_password
+        except Exception e:
+            print(f"An error occured while hashing password: {e}")
+            return b''
 
     @staticmethod
     def _generate_uuid() -> str:

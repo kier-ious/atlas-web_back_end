@@ -3,7 +3,6 @@
 Main file
 """
 from auth import Auth
-from auth import _hash_password
 
 
 email = 'me@me.com'
