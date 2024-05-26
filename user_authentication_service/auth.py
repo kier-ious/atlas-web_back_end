@@ -75,6 +75,6 @@ class Auth:
         if user is None:
             return None
 
-        session_id = self._generate_uuid()
+        session_id = str(uuid.uuid4())
         self._db.update_user(user.id, session_id=session_id)
         return session_id
