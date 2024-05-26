@@ -24,7 +24,7 @@ class Auth:
         return hashed_password
 
     @staticmethod
-    def _generate_uuid() -> uuid:
+    def _generate_uuid() -> str:
         """Generate new UUID"""
         return str(uuid.uuid4())
 
