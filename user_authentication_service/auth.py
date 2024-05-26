@@ -5,16 +5,17 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
 from user import Base, User
-from sqlalchemy.orm.exc import InvalidRequestError, NoResultFound
+from sqlalchemy.orm.exc import NoResultFound
 import bcrypt
 from db import DB
 import uuid
+import re
 
 
 class Auth:
     """Auth class to interact with the authentication database."""
     def __init__(self):
-        self._db = DB()
+        pass
 
     def _hash_password(self, password: str) -> bytes:
         """Returns bytes in a salty hash of input PW"""
