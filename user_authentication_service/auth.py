@@ -8,6 +8,7 @@ from user import Base, User
 from sqlalchemy.exc import InvalidRequestError, NoResultFound
 import bcrypt
 from db import DB
+import uuid
 
 
 class Auth:
@@ -21,6 +22,11 @@ class Auth:
         hashed_password = bcrypt.hashpw(password.encode(
             'utf-8'), bcrypt.gensalt())
         return hashed_password
+
+    @staticmethod
+    def _generate_uuid() -> uuid:
+        """Generate new UUID"""
+        return str(uuid.uuid4())
 
     def register_user(self, email: str, password: str) -> User:
         """Register a new user"""
