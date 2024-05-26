@@ -37,8 +37,22 @@ class Auth:
 
     def valid_login(self, email: str, password: str) -> bool:
         """Checking if uer is valid w/ bcrypt"""
-        user = self._db.find_user_by(email=email)
-        if user:
-            hashed_password = user.hashed_password
-            return bcrypt.checkpw(password.encode('utf-8'), hashed_password)
-        return False
+        try:
+            user = self._db.find_user_by(email=email)
+        except NoResultFound:
+            """If user doesn't exist return False"""
+            return False
+
+        if user is None:
+            """If user is None return False"""
+            return False
+
+        """Extract the hashed PW from user obj"""
+        hashed_password = user.hashed_password
+
+        if bcrypt.checkpw(password.encode('utf-8'), hashed_password):
+            """If PW matches, return true"""
+            return True
+        else:
+            """If PW doesn't match return false"""
+            return False
