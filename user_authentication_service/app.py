@@ -78,7 +78,7 @@ def get_reset_password_token():
         rest_token = AUTH.get_reset_password_token(email)
         return jsonify({"email": email, "reset_token": rest_token})
     except ValueError:
-        return abort(403, description="User does not exist")
+        return abort(403)
 
 
 if __name__ == "__main__":
