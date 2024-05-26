@@ -6,7 +6,7 @@ import uuid
 from user import User
 # Handle SQLAlchemy version compatibility
 try:
-    from sqlalchemy.orm.exc import NoResultFound 
+    from sqlalchemy.orm.exc import NoResultFound
 except ImportError:
     from sqlalchemy.exc import NoResultFound
 
