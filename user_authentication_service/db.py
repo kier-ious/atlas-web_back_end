@@ -19,7 +19,8 @@ class DB:
         self._engine = create_engine("sqlite:///a.db")
         Base.metadata.drop_all(self._engine)
         Base.metadata.create_all(self._engine)
-        self.__session = None
+        DBSession = sessionmaker(bind=self._engine)
+        self.__session = DBSession()
 
     @property
     def _session(self) -> Session:
