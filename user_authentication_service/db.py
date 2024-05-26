@@ -58,7 +58,6 @@ class DB:
             user = self.__session.query(User).filter_by(**kwargs).one()
             return user
         except NoResultFound:
-            print("No user fits requirements.")
             return None
         except InvalidRequestError:
             raise InvalidRequestError("Invalid query arguments provided.")
