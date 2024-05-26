@@ -11,7 +11,6 @@ except ImportError:
     from sqlalchemy.exc import NoResultFound
 
 
-
 def _hash_password(password: str) -> bytes:
     """Returns bytes in a salty hash of input PW"""
     hashed_password = bcrypt.hashpw(password.encode(
