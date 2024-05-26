@@ -117,4 +117,4 @@ class Auth:
 
         hashed_password = _hash_password(password)
         self._db.update_user(
-            user.id, hashed_password=hashed_password, rest_token=None)
+            user.id, hashed_password=hashed_password)
