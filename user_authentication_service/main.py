@@ -3,6 +3,8 @@
 Main file
 """
 from auth import Auth
+from auth import _hash_password
+
 
 email = 'me@me.com'
 password = 'mySecuredPwd'
@@ -19,4 +21,4 @@ try:
     user = auth.register_user(email, password)
     print("successfully created a new user!")
 except ValueError as err:
-    print("could not create a new user: {}".format(err))     
+    print("could not create a new user: {}".format(err))
