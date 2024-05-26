@@ -8,8 +8,6 @@ from user import Base, User
 from sqlalchemy.exc import InvalidRequestError
 from sqlalchemy.orm.exc import NoResultFound
 import bcrypt
-
-
 from db import DB
 
 
@@ -32,8 +30,8 @@ class Auth:
 
         return user
 
-
-def _hash_password(password: str) -> bytes:
-    """Returns bytes in a salty hash of input PW"""
-    _hash_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-    return _hash_password
+    def _hash_password(self, password: str) -> bytes:
+        """Returns bytes in a salty hash of input PW"""
+        _hash_password = bcrypt.hashpw(password.encode(
+            'utf-8'), bcrypt.gensalt())
+        return _hash_password
