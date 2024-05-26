@@ -16,15 +16,14 @@ class Auth:
     def __init__(self):
         self._db = DB()
 
-    @staticmethod
-    def _hash_password(password: str) -> bytes:
+
+    def _hash_password(self, password: str) -> bytes:
         """Returns bytes in a salty hash of input PW"""
         hashed_password = bcrypt.hashpw(password.encode(
             'utf-8'), bcrypt.gensalt())
         return hashed_password
 
-    @staticmethod
-    def _generate_uuid() -> str:
+    def _generate_uuid(self) -> str:
         """Generate new UUID"""
         new_uuid = uuid.uuid4()
         print("Generated UUID:", new_uuid)
