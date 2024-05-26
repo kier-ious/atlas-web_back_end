@@ -78,3 +78,14 @@ class Auth:
         session_id = str(uuid.uuid4())
         self._db.update_user(user.id, session_id=session_id)
         return session_id
+
+    def get_user_from_session_id(self, session_id: str) -> User:
+        """It takes a single session_id string argument and
+        returns the corresponding User or None."""
+        if session_id is None:
+            return None
+        try:
+            user = self._db.find_user_by(session_id=session_id)
+            return user
+        except NoResultFound:
+            return None
