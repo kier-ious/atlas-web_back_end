@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""
-Main file
-"""
+"""Main file"""
 from auth import Auth
 
 email = 'me@me.com'
