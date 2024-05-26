@@ -1,15 +1,10 @@
 #!/usr/bin/env python3
 """Auth"""
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.orm.session import Session
-from user import Base, User
-from sqlalchemy.exc import InvalidRequestError
-from sqlalchemy.orm.exc import NoResultFound
+from sqlalchemy.exc import InvalidRequestError, NoResultFound
 import bcrypt
 from db import DB
 import uuid
+from user import User
 
 
 class Auth:
@@ -17,13 +12,15 @@ class Auth:
     def __init__(self):
         self._db = DB()
 
-    def _hash_password(self, password: str) -> bytes:
+    @staticmethod
+    def _hash_password(password: str) -> bytes:
         """Returns bytes in a salty hash of input PW"""
         hashed_password = bcrypt.hashpw(password.encode(
             'utf-8'), bcrypt.gensalt())
         return hashed_password
 
-    def _generate_uuid(self) -> str:
+    @staticmethod
+    def _generate_uuid() -> str:
         """Generate new UUID"""
         return str(uuid.uuid4())
 
@@ -33,7 +30,6 @@ class Auth:
             existing_user = self._db.find_user_by(email=email)
             if existing_user:
                 raise ValueError(f"User {email} already exists!")
-
         except NoResultFound:
             pass
 
