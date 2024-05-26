@@ -109,11 +109,11 @@ class Auth:
         return reset_token
 
     def update_password(self, reset_token: str, password: str) -> None:
-        """Update users PW w/ reset token"""
+        """Update users PW with reset token"""
         try:
             user = self._db.find_user_by(reset_token=reset_token)
         except NoResultFound:
-            raise ValueError("invalid reset token")
+            raise ValueError("Invalid or expired reset token")
 
         hashed_password = _hash_password(password)
         self._db.update_user(
