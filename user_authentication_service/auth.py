@@ -34,3 +34,11 @@ class Auth:
         """Save into DB"""
         user = self._db.add_user(email, hashed_password)
         return user
+
+    def valid_login(self, email: str, password: str) -> bool:
+        """Checking if uer is valid w/ bcrypt"""
+        user = self._db.find_user_by(email=email)
+        if user:
+            hashed_password = user.hashed_password
+            return bcrypt.checkpw(password.encode('utf-8'), hashed_password)
+        return False
