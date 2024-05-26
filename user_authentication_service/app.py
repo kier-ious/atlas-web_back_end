@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """the APP"""
-from flask import Flask, jsonify, request, make_response, abort
+from flask import Flask, jsonify, request, make_response, abort, redirect
 from auth import Auth
 
 
@@ -42,6 +42,19 @@ def login():
     else:
         abort(401, 'Unauthorized')
 
+
+@app.route("/sessions", methods=["DELETE"])
+def logout():
+    session_id = request.cookies.get("session_id")
+    if session_id is None:
+        abort(403)
+
+    user = AUTH.get_user_from_session_id(session_id=session_id)
+    if user is None:
+        abort(403)
+
+    AUTH.destroy_session(user.id)
+    return redirect("/")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")
