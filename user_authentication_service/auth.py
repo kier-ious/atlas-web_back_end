@@ -26,6 +26,8 @@ class Auth:
     @staticmethod
     def _generate_uuid() -> str:
         """Generate new UUID"""
+        new_uuid = uuid.uuid4()
+        print("Generated UUID:", new_uuid)
         return str(uuid.uuid4())
 
     def register_user(self, email: str, password: str) -> User:
