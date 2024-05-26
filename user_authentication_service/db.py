@@ -54,7 +54,9 @@ class DB:
             User: User that fits requirements
         """
         try:
-            return self.__session.query(User).filter_by(**kwargs).one()
+            user = self.__session.query(User).filter_by(**kwargs).one()
+            print("found the existing user!")
+            return user
         except NoResultFound:
             raise NoResultFound("No user fits requirements.")
         except InvalidRequestError:
