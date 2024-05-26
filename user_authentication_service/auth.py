@@ -1,12 +1,7 @@
 #!/usr/bin/env python3
 """Auth"""
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.orm.session import Session
 from user import Base, User
-from sqlalchemy.exc import InvalidRequestError
-from sqlalchemy.orm.exc import NoResultFound
+from sqlalchemy.exc import InvalidRequestError, NoResultFound
 import bcrypt
 from db import DB
 
