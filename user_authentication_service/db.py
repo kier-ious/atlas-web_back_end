@@ -43,9 +43,19 @@ class DB:
         new_user = User(email=email, hashed_password=hashed_password)
         """Add user to session"""
         session = self._session
-
         session.add(new_user)
-
         session.commit()
-
         return new_user
+
+    def find_user_by(self, **kwargs) -> User:
+        """Finds user with kwargs
+
+        Returns:
+            User: User that fits requirements
+        """
+        try:
+            return self.__session.query(User).filter_by(**kwargs).one()
+        except NoResultFound:
+            raise NoResultFound("No user fits requirements.")
+        except InvalidRequestError:
+            raise InvalidRequestError("Invalid query arguments provided.")
