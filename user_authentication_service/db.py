@@ -70,7 +70,7 @@ class DB:
         """
         try:
             """Locate user by their ID"""
-            user = self.find_user_id(id=user_id)
+            user = self.find_user_by(id=user_id)
 
             """Update their info"""
             for attr, value in kwargs.items():
