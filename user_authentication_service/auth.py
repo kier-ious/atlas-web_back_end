@@ -11,7 +11,7 @@ except ImportError:
     from sqlalchemy.exc import NoResultFound
 
 
-@staticmethod
+
 def _hash_password(password: str) -> bytes:
     """Returns bytes in a salty hash of input PW"""
     hashed_password = bcrypt.hashpw(password.encode(
@@ -19,15 +19,15 @@ def _hash_password(password: str) -> bytes:
     return hashed_password
 
 
+def _generate_uuid() -> str:
+    """Generate new UUID"""
+    return str(uuid.uuid4())
+
+
 class Auth:
     """Auth class to interact with the authentication database."""
     def __init__(self):
         self._db = DB()
-
-    @staticmethod
-    def _generate_uuid() -> str:
-        """Generate new UUID"""
-        return str(uuid.uuid4())
 
     def register_user(self, email: str, password: str) -> User:
         """Register a new user"""
