@@ -55,7 +55,6 @@ class DB:
         """
         try:
             user = self.__session.query(User).filter_by(**kwargs).one()
-            print("found the existing user!")
             return user
         except NoResultFound:
             raise NoResultFound("No user fits requirements.")
