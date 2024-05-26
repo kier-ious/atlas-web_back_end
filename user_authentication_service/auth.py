@@ -101,7 +101,7 @@ class Auth:
         """FInd user by token, if user doesn't exist raise ValueError"""
         try:
             user = self._db.find_user_by(email=email)
-        except NoResultFound:
+        except ValueError:
             raise ValueError(f"User with email {email} does not exist")
 
         reset_token = _generate_uuid()
