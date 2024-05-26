@@ -15,7 +15,7 @@ import uuid
 class Auth:
     """Auth class to interact with the authentication database."""
     def __init__(self):
-        pass
+        self._db = DB()
 
     def _hash_password(self, password: str) -> bytes:
         """Returns bytes in a salty hash of input PW"""
@@ -35,11 +35,13 @@ class Auth:
                 raise ValueError(f"User {email} already exists!")
 
         except NoResultFound:
-            """If new, hash dat PW!"""
-            hashed_password = self._hash_password(password)
-            """Save into DB"""
-            user = self._db.add_user(email, hashed_password)
-            return user
+            pass
+
+        """If new, hash dat PW!"""
+        hashed_password = self._hash_password(password)
+        """Save into DB"""
+        user = self._db.add_user(email, hashed_password)
+        return user
 
     def valid_login(self, email: str, password: str) -> bool:
         """Checking if uer is valid w/ bcrypt"""
