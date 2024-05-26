@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 """Auth"""
-from sqlalchemy.exc import InvalidRequestError, NoResultFound
 import bcrypt
 from db import DB
 import uuid
 from user import User
+# Handle SQLAlchemy version compatibility
+try:
+    from sqlalchemy.orm.exc import NoResultFound 
+except ImportError:
+    from sqlalchemy.exc import NoResultFound
 
 
 class Auth:
