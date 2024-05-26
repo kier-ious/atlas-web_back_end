@@ -9,7 +9,6 @@ from sqlalchemy.orm.exc import NoResultFound
 import bcrypt
 from db import DB
 import uuid
-import re
 
 
 class Auth:
@@ -62,3 +61,17 @@ class Auth:
         else:
             """If PW doesn't match return false"""
             return False
+
+    def create_session(self, email: str) -> str:
+        """Creates sesh ID"""
+        try:
+            user = self._db.find_user_by(email=email)
+        except NoResultFound:
+            return None
+
+        if user is None:
+            return None
+
+        session_id = self._generate_uuid()
+        self._db.update_user(user.id, session_id=session_id)
+        return session_id
