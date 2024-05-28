@@ -83,7 +83,7 @@ class TestGithubOrgClient(unittest.TestCase):
 
     @parameterized.expand([
         # Test case 1, repo w/ expected license key
-        ({"license": {"key": "other_license"}}, "my license", True),
+        ({"license": {"key": "my_license"}}, "my license", True),
         # Test case 2, repo w/ different license key
         ({"license": {"key": "other_license"}}, "my license", False),
     ])
