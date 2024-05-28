@@ -75,7 +75,7 @@ class TestGetJson(unittest.TestCase):
             mock_get.assert_called_once_with(test_url)
 
 
-class TestMemorize(unittest.TestCase):
+class TestMemoize(unittest.TestCase):
     def test_memoize(self):
         """Test that memoizes decorator caches the result
         of a_method
