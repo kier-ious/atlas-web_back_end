@@ -75,27 +75,27 @@ class TestGetJson(unittest.TestCase):
             mock_get.assert_called_once_with(test_url)
 
 
-class TestClass:
-    def a_method(self):
-        """Returns a fixed value, int: 42
-        """
-        return 42
-
-    @memoize
-    def a_property(self):
-        """Uses memoization to cache the result of a_method
-        """
-        return self.a_method()
-
-
 class TestMemorize(unittest.TestCase):
     def test_memoize(self):
         """Test that memoizes decorator caches the result
         of a_method
 
         Mocks:
-        TestClass.a_method to vrify its called only oonce.
+        TestClass.a_method to vrify its called only once.
         """
+
+        class TestClass:
+            def a_method(self):
+                """Returns a fixed value, int: 42
+                """
+                return 42
+
+            @memoize
+            def a_property(self):
+                """Uses memoization to cache the result of a_method
+                """
+                return self.a_method()
+
         with patch.object(TestClass, 'a_method',
                           return_value=42) as mock_method:
             test_instance = TestClass()
