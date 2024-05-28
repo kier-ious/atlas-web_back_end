@@ -19,14 +19,14 @@ class TestAccessNestedMap(unittest.TestCase):
         Args:
             nested_map (Mapping): The nested map to access
             path (Sequence): The path of keys to access in the nested map.
-            expected (Any): The expected value at the end of the path. 
+            expected (Any): The expected value at the end of the path.
         """
         self.assertEqual(access_nested_map(nested_map, path), expected)
 
-    @parameterized.expand({
+    @parameterized.expand([
         ({}, ("a",)),
         ({"a": 1}, ("a", "b")),
-    })
+    ])
     def test_access_nested_map_exception(self, nested_map, path):
         """Test access_nested_map raises KeyError for invalid paths.
 
