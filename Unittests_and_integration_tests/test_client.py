@@ -33,6 +33,19 @@ class TestGithubOrgClient(unittest.TestCase):
         self.assertEqual(result, {
             'name': org_name, 'description': 'Description of ' + org_name})
 
+    def test_public_repos_url(self):
+        """Test the _public_repos_url property of the GithubOrgClient class
+        Define a know payload for the org method"""
+        org_payload = {
+            'repos_url': 'https://api.github.com/orgs/testorg/repos'}
+        """Create and instance of GithubOrgClient"""
+        client = GithubOrgClient('testorg')
+        """Access the _public_repos_url property"""
+        public_repos_url = client._public_repos_url
+        """Verify that the property returns the expected URL"""
+        expected_url = 'https://api.github.com/orgs/testorg/repos'
+        self.assertEqual(public_repos_url, expected_url)
+
 
 if __name__ == '__main__':
     unittest.main()
