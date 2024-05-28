@@ -39,6 +39,7 @@ class TestAccessNestedMap(unittest.TestCase):
         with self.assertRaises(KeyError) as ke:
             access_nested_map(nested_map, path)
 
+
 class TestGetJson(unittest.TestCase):
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
@@ -68,14 +69,19 @@ class TestGetJson(unittest.TestCase):
             with the test_url"""
             mock_get.assert_called_once_with(test_url)
 
-class TestClass:
 
+class TestClass:
     def a_method(self):
+        """Returns a fixed value, int: 42
+        """
         return 42
 
     @memoize
     def a_property(self):
+        """Uses memoization to cache the result of a_method
+        """
         return self.a_method()
+
 
 class TestMemorize(unittest.TestCase):
     def test_memoize(self):
@@ -85,7 +91,8 @@ class TestMemorize(unittest.TestCase):
         Mocks:
         TestClass.a_method to vrify its called only oonce.
         """
-        with patch.object(TestClass, 'a_method', return_value=42) as mock_method:
+        with patch.object(TestClass, 'a_method',
+                          return_value=42) as mock_method:
             test_instance = TestClass()
             """Acces a_property twice"""
             first_call = test_instance.a_property
@@ -95,6 +102,7 @@ class TestMemorize(unittest.TestCase):
             self.assertEqual(second_call, 42)
             """Assert that a_method is called only once"""
             mock_method.assert_called_once()
+
 
 if __name__ == '__main__':
     unittest.main()
