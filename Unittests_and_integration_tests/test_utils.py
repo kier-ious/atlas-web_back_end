@@ -76,6 +76,12 @@ class TestGetJson(unittest.TestCase):
 
 
 class TestMemoize(unittest.TestCase):
+    """Test suite for the memoize decorator.
+    The memoize decorator is used to cache the result of a method call,
+    ensuring that the method is only called once even if accessed multiple times.
+    This test suite verifies that the memoize decorator works correctly
+    by testing a property method that uses it.
+    """
     def test_memoize(self):
         """Test that memoizes decorator caches the result
         of a_method
