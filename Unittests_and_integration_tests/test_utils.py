@@ -9,7 +9,10 @@ from typing import Dict
 
 
 class TestAccessNestedMap(unittest.TestCase):
-    """Test"""
+    """Test suite for the access_nested_map function
+    access_nested_map function is designed to acces the values w/in
+    nested dict using sequence of keys.
+    """
     @parameterized.expand([
         ({"a": 1}, ("a",), 1),
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
