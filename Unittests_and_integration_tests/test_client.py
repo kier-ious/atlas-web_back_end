@@ -6,7 +6,7 @@ from unittest.mock import patch
 from client import GithubOrgClient
 
 
-class TestGithubOrhClient(unittest.TestCase):
+class TestGithubOrgClient(unittest.TestCase):
     """Test suite for the GithubOrgClient class.
     The GithubOrgClient class is responsible for interacting with the Github
     API to retrieve info about organizations. This test suite verifies that the
@@ -36,4 +36,3 @@ class TestGithubOrhClient(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
