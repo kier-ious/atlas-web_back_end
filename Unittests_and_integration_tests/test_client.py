@@ -62,19 +62,39 @@ class TestGithubOrgClient(unittest.TestCase):
         public_repos_url = 'https://api.github.com/orgs/testorg/repos'
         """Patch the _public_repos_url property to return the known url"""
         mock_public_repos_url.return_value = public_repos_url
+
         """Patch the get_json method to return the known payload"""
         mock_get_json.return_value = repos_payload
+
         """Create an instance of the GithubOrgClient"""
         client = GithubOrgClient('testorg')
+
         """Access the public_repos property"""
         public_repos = client.public_repos
+
         """Verify that the property returns the expected list of repos"""
         expected_repos = [
             {'name': 'repo1'}, {'name': 'repo2'}, {'name': 'repo3'}]
         self.assertEqual(public_repos, expected_repos)
+
         """Verify that the mocked property & get_json were called only once"""
         mock_public_repos_url.assert_called_once()
         mock_get_json.assert_called_once_with(public_repos_url)
+
+    @parameterized.expand([
+        # Test case 1, repo w/ expected license key
+        ({'license': {'key': 'other_license'}}, 'my license', True)
+        # Test case 2, repo w/ different license key
+        ({'license': {'key': 'other_license'}}, 'my license', False)
+    ])
+    def test_has_license(self, repo, license_key, expected_result):
+        """Test that has_license method of the GithubOrgClient class"""
+        """Create a mock for the GithubOrgClient"""
+        client = GithubOrgClient('testorg')
+        """Call the has_license method with given repo and license_key"""
+        result = client.has_license(repo, license_key)
+        """Verify that the result matches the expected result"""
+        self.assertEqual(result, expected_result)
 
 
 if __name__ == '__main__':
