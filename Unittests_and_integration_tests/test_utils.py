@@ -51,7 +51,7 @@ class TestGetJson(unittest.TestCase):
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False}),
     ])
-    def test_get_json(self, test_url: str, test_payload: Dict) -> None:
+    def test_get_json(self, test_url: str, test_payload: dict) -> None:
         """Test get_json returns the expected result from the mocked
         HTTP call.
 
@@ -60,7 +60,7 @@ class TestGetJson(unittest.TestCase):
             test_payload (dict): The expected JSON payload returned
             by the GET request.
         """
-        with patch('request.get') as mock_get:
+        with patch('utils.request.get') as mock_get:
             """Create a mock response object w/ a json method
             that returns test_payload"""
             mock_response = Mock()
