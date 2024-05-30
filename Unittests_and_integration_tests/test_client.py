@@ -4,6 +4,7 @@ import unittest
 from parameterized import parameterized, parameterized_class
 from unittest.mock import patch, Mock
 from client import GithubOrgClient
+from fixtures import TEST_PAYLOAD
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -95,6 +96,27 @@ class TestGithubOrgClient(unittest.TestCase):
         result = client.has_license(repo, license_key)
         """Verify that the result matches the expected result"""
         self.assertEqual(result, expected_result)
+
+
+@parameterized_class((
+    "org_payload",
+    "repos_payload",
+    "expected_repos",
+    "apache2_repos"), TEST_PAYLOAD
+)
+
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+    @classmethod
+    def setupClass(cls):
+        parameters = ["return_value.json.side_effect"]
+        """Integration test suite for testing
+        GithubOrgClient.public_repos method"""
+        cls.get_patcher = patch('requests.get', **parameters)
+        cls.mock_get = cls.get_patcher.start()
+
+    def tearDownClass(cls):
+        """Stoping the classmethod"""
+        cls.get_patcher.stop()
 
 
 if __name__ == '__main__':
