@@ -60,7 +60,7 @@ class TestGetJson(unittest.TestCase):
             test_payload (dict): The expected JSON payload returned
             by the GET request.
         """
-        with patch('utils.request.get') as mock_get:
+        with patch('utils.requests.get') as mock_get:
             """Create a mock response object w/ a json method
             that returns test_payload"""
             mock_response = Mock()
