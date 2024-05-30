@@ -114,6 +114,7 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
         cls.get_patcher = patch('requests.get', **parameters)
         cls.mock_get = cls.get_patcher.start()
 
+    @classmethod
     def tearDownClass(cls):
         """Stoping the classmethod"""
         cls.get_patcher.stop()
