@@ -107,7 +107,7 @@ class TestGithubOrgClient(unittest.TestCase):
 
 class TestIntegrationGithubOrgClient(unittest.TestCase):
     @classmethod
-    def setupClass(cls):
+    def setUpClass(cls):
         parameters = ["return_value.json.side_effect"]
         """Integration test suite for testing
         GithubOrgClient.public_repos method"""
