@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Testing client"""
 import unittest
-from parameterized import parameterized
+from parameterized import parameterized, parameterized_class
 from unittest.mock import patch, Mock
 from client import GithubOrgClient
 
