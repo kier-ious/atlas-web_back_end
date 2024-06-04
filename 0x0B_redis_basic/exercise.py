@@ -5,7 +5,7 @@ import functools
 from typing import Union, Callable, Optional
 
 
-def count_calls(method: Callable) -> Callable:
+def count_calls(method):
     """Decorator to cound how many times a method is called"""
     @functools.wraps(method)
     def wrapper(self, *args, **kwargs):
@@ -31,6 +31,7 @@ class Cache:
         self._redis = redis.Redis(host=host, port=port, db=db)
         self._redis.flushdb()
 
+    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """Stores data in the cache and returns generated key
 
