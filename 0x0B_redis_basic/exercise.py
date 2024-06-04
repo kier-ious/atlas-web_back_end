@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import redis
 import uuid
-from typing import Union
+from typing import Union, Callable, Optional
 
 
 class Cache:
@@ -14,7 +14,7 @@ class Cache:
         Args:
             host (str, optional): Hostname or IP of the redis server
             port (int, optional): The port that Redis server is listening.
-            Defaults to 8080.
+            Defaults to 6379.
             db (int, optional): Redis DB to use Defaults to 0.
         """
         self._redis = redis.Redis(host=host, port=port, db=db)
@@ -32,6 +32,19 @@ class Cache:
         self._redis.set(key, data) # Storing data in Redis
         return key
 
-    def flushdb(self) -> None:
-        """Flushes the cache"""
-        self._redis.flushdb()
+    def get(self, key: str, fn: Optional[Callable] = None):
+        """Retrieves data from the cache and converts it to desired format"""
+        data = self._redis.get(key)
+        if data is None:
+            return None
+        if fn:
+            return fn(data)
+        return data
+
+    def det_str(self, key: str):
+        """Retrieves data from cache and converts to a string"""
+        return self.get(key, fn=lambda d: d.decode('utf-8'))
+
+    def get_int(self, key: str):
+        """Retrieves data from cache and converts to an integer"""
+        return self.get(key, fn=lambda d: int(d.decode('utf-8')))
