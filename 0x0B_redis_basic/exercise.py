@@ -29,7 +29,7 @@ class Cache:
             str: The random key used to store the data
         """
         key = str(uuid.uuid4()) # Random key
-        self.redis.set(key, data) # Storing data in Redis
+        self._redis.set(key, data) # Storing data in Redis
         return key
 
     def flushdb(self) -> None:
