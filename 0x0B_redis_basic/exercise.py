@@ -59,3 +59,7 @@ class Cache:
     def get_int(self, key: str):
         """Retrieves data from cache and converts to an integer"""
         return self.get(key, fn=lambda d: int(d.decode('utf-8')))
+
+    def incr(self, key: str) -> str:
+        """Increments the int value of a key by 1 and returns new value"""
+        return self._redis.incr(key)
