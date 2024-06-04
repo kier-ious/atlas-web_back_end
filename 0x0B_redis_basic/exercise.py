@@ -34,4 +34,4 @@ class Cache:
 
     def flushdb(self) -> None:
         """Flushes the cache"""
-        self._redis.flushdb()
+        self.redis.flushdb()
