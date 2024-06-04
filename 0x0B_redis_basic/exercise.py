@@ -41,7 +41,7 @@ class Cache:
             return fn(data)
         return data
 
-    def det_str(self, key: str):
+    def get_str(self, key: str):
         """Retrieves data from cache and converts to a string"""
         return self.get(key, fn=lambda d: d.decode('utf-8'))
 
