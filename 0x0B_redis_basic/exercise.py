@@ -15,39 +15,40 @@ def count_calls(method: Callable) -> Callable:
         return method(self, *args, **kwargs)
     return wrapper
 
+
 def call_history(method: Callable) -> Callable:
     """Decorator to store the history of inputs and outputs
     for a particular function"""
     @functools.wraps(method)
     def wrapper(self, *args, **kwargs):
         """Wrapper funciton to store input/output history in Redis"""
-        # Prepare the Redis keys for the inputs/outputs
+        """Prepare the Redis keys for the inputs/outputs"""
         input_key = f"{method.__qualname__}:inputs"
         output_key = f"{method.__qualname__}:outputs"
-        # Log the inout args
+        """Log the inout args"""
         self._redis.rpush(input_key, str(args))
-        # Call the original method and get the output
+        """Call the original method and get the output"""
         output = method(self, *args, **kwargs)
-        # log the output
+        """log the output"""
         self._redis.rpush(output_key, str(output))
 
         return output
     return wrapper
 
+
 def replay(method: Callable):
     """Display the history of the calls of a particular funciton"""
-    # Prepare the redis keys for inputs/outputs
-    input_key =f"{method.__qualname__}:inputs"
-    output_key =f"{method.__qualname__}:outputs"
-    # Retrieve the inputs/outputs from redis
+    """Prepare the redis keys for inputs/outputs"""
+    input_key = f"{method.__qualname__}:inputs"
+    output_key = f"{method.__qualname__}:outputs"
+    """Retrieve the inputs/outputs from redis"""
     inputs = method.__self__._redis.lrange(input_key, 0, -1)
     outputs = method.__self__._redis.lrange(output_key, 0, -1)
-    # Print the call history
+    """Print the call history"""
     print(f"{method.__qualname__} was called{len(inputs)} times:")
     for input_, output in zip(inputs, outputs):
         print(f"{method.__qualname__}(
               *{input_.decode('utf-8')}) -> {output.decode('utf-8')}")
-
 
 
 class Cache:
@@ -76,8 +77,10 @@ class Cache:
         Returns:
             str: The random key used to store the data
         """
-        key = str(uuid.uuid4()) # Random key
-        self._redis.set(key, data) # Storing data in Redis
+        key = str(uuid.uuid4())
+        """Random key"""
+        self._redis.set(key, data)
+        """Storing data in Redis"""
         return key
 
     def get(self, key: str, fn: Optional[Callable] = None):
