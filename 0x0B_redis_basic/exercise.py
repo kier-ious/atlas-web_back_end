@@ -44,8 +44,10 @@ def replay(method: Callable):
     """Retrieve the inputs/outputs from redis"""
     inputs = method.__self__._redis.lrange(input_key, 0, -1)
     outputs = method.__self__._redis.lrange(output_key, 0, -1)
-    """Print the call history"""
+
     print(f"{method.__qualname__} was called{len(inputs)} times:")
+    """Print the call history"""
+
     for input_, output in zip(inputs, outputs):
         """Decode input/output from bytes to str and print the details"""
         input_str = input_.decode('utf-8')
