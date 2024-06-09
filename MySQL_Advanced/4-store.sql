@@ -1,7 +1,7 @@
 -- Task4, BUY BUY BUY
 -- SQL script that creates a trigger that decreases
 -- the quantity of an item after adding a new order.
-CREATE TRIGGER after_adding_new
+CREATE TRIGGER decreases_quantity_after_adding_new_item
 AFTER INSERT ON orders
 FOR EACH ROW
 BEGIN
