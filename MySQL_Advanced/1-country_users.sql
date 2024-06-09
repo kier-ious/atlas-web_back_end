@@ -14,4 +14,5 @@ UPDATE users
 SET country = 'US'
 WHERE country is NULL;
 
-
+-- Display the table structure
+DESCRIBE users; 
