@@ -1,18 +1,11 @@
--- Task 1, In and not out
--- Modifies users table with country column
+-- Task1, adding country column
+-- SQL script that creates a table users if it doesn't exist
 
--- Adding country column
-ALTER TABLE users
-ADD COLUMN country ENUM('US', 'CO', 'TN') NOT NULL DEFAULT 'US' AFTER name;
-
--- Modifying the email coumn to be UNIQUE
-ALTER TABLE users
-MODIFY COLUMN email VARCHAR(255) NOT NULL UNIQUE;
-
--- Add the default country 'US' for existing rows where country isn't set
-UPDATE users
-SET country = 'US'
-WHERE country is NULL;
-
--- Display the table structure
-DESCRIBE users; 
+CREATE TABLE IF NOT EXISTS users (
+  id INT NOT NULL AUTO_INCREMENT,
+  email VARCHAR(255) NOT NULL,
+  name VARCHAR(255),
+  country ENUM('US', 'CO', 'TN') NOT NULL DEFAULT 'US',
+  PRIMARY KEY (id),
+  UNIQUE (email)
+);
