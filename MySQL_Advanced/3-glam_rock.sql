@@ -4,7 +4,7 @@ rock as their main style, ranked by their longevity */
 
 SELECT
     band_name,
-    IFNULL(YEAR(COALESCE(split, CURRENT_DATE())) - YEAR(formed), 0) AS lifespan
+    IFNULL(YEAR(COALESCE(split, CURDATE())) - YEAR(formed), 0) AS lifespan
 FROM
     metal_bands
 WHERE
