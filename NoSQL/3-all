@@ -1,0 +1,2 @@
+// Task 3, all docs
+db.school.find()
