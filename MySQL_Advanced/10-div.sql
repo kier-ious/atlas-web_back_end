@@ -9,5 +9,5 @@ BEGIN
   ELSE
     SET result = a / b;
   END IF;
-  RETURN result;
-END //
+END;
+DELIMITER;
