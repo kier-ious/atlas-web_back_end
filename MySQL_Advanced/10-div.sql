@@ -10,4 +10,4 @@ BEGIN
     return = a / b;
   END IF;
 END;
-DELIMITER;
+DELIMITER ;
