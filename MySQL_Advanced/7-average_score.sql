@@ -1,5 +1,5 @@
 -- Task 7, Average score
--- Script that creates a stores scored average
+-- Script that creates a stored scored average
 DELIMITER //
 DROP PROCEDURE IF EXISTS ComputeAverageScoreForUser;
 
