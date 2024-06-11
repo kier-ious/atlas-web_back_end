@@ -1,8 +1,8 @@
 services:
   app:
     entrypoint:
-    - sleep
-    - infinity
+    # - sleep
+    # - infinity
     build:
       context: .
       dockerfile: Dockerfile
@@ -12,4 +12,3 @@ services:
       source: /var/run/docker.sock
       target: /var/run/docker.sock
     - ./:/app
-
