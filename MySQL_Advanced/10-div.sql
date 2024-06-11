@@ -2,10 +2,8 @@
 -- Script that creates a function that divides and returns something
 DELIMITER //
 CREATE FUNCTION SafeDiv(a INT, b INT)
-RETURNS DECIMAL(10, 10)
-DETERMINISTIC
+RETURNS FLOAT
 BEGIN
-  DECLARE result DECIMAL(10, 10);
   IF b = 0 THEN
     SET result = 0;
   ELSE
