@@ -1,5 +1,5 @@
 // Task 7, delete by match
-db.school.delete(
+db.school.deleteMany(
   { name: "Holberton school" },
-  {muti: true}
+  {mutli: true}
 )
