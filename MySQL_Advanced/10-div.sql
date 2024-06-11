@@ -5,9 +5,9 @@ CREATE FUNCTION SafeDiv(a INT, b INT)
 RETURNS FLOAT
 BEGIN
   IF b = 0 THEN
-    SET result = 0;
+    return = 0;
   ELSE
-    SET result = a / b;
+    return = a / b;
   END IF;
 END;
 DELIMITER;
