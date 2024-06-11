@@ -1,31 +1,15 @@
-version: '3.8'
-
 services:
   app:
+    entrypoint:
+    - sleep
+    - infinity
     build:
       context: .
       dockerfile: Dockerfile
-    command: sleep infinity
+    init: true
     volumes:
-      - ./:/app
-    depends_on:
-      - db
-    networks:
-      - mynet
+    - type: bind
+      source: /var/run/docker.sock
+      target: /var/run/docker.sock
+    - ./:/app
 
-  db:
-    image: mysql:5.7
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: holberton
-    volumes:
-      - db_data:/var/lib/mysql
-    networks:
-      - mynet
-
-networks:
-  mynet:
-
-volumes:
-  db_data:
