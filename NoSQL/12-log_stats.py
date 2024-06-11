@@ -5,8 +5,8 @@ from pymongo import MongoClient
 
 def log_stats():
     """Script that provides data about nginx logs stored in MongoDB"""
-    client = MongoClient()
-    db = client["logs"]
+    client = MongoClient("mongodb://localhost:27017/")
+    db = client.logs
     collection = db["nginx"]
 
     total_logs = collection.count_documents({})
@@ -22,3 +22,7 @@ def log_stats():
     status_check_count = collection.count_documents({"method":
                                                     "GET", "path": "/status"})
     print(f"{status_check_count} status check")
+
+
+if __name__ == "__main__":
+    log_stats()
