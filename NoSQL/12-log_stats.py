@@ -5,11 +5,11 @@ from pymongo import MongoClient
 
 def log_stats():
     """Script that provides data about nginx logs stored in MongoDB"""
-    client = MongoClient["mongo://localhost:27017/"]
+    client = MongoClient["mongodb://localhost:27017/"]
     db = client["logs"]
     collection = db["nginx"]
 
-    total_logs = collection.count_documents()
+    total_logs = collection.count_documents({})
     print(f"{total_logs} logs")
 
     methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
