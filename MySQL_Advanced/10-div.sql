@@ -6,7 +6,7 @@ RETURNS INT
 DETERMINISTIC
 BEGIN
   DECLARE result FLOAT;
-  IF b = 0 THEN
+  IF b == 0 THEN
     SET result = 0;
   ELSE
     SET result = a / b;
