@@ -1,5 +1,5 @@
 // Task 6, Update
-db.school.update(
+db.school.updateMany(
   { name: "Holberton school" },
-  { $set: { "address": "972 Mission street" } }
+  { $set: { address: "972 Mission street" } }
 )
