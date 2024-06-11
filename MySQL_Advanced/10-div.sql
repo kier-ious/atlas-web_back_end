@@ -5,7 +5,7 @@ CREATE FUNCTION SafeDiv(a INT, b INT)
 RETURNS INT
 DETERMINISTIC
 BEGIN
-  DECLARE result INT;
+  DECLARE result FLOAT;
   IF b = 0 THEN
     SET result = 0;
   ELSE
@@ -13,4 +13,3 @@ BEGIN
   END IF;
   RETURN result;
 END //
-
