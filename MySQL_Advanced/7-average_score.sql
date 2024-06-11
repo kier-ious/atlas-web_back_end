@@ -1,8 +1,7 @@
 -- Task 7, Average score
 -- Script that creates a stores scored average
 DELIMITER //
-DROP PROCEDURE IF EXISTS ComputeAverageScoreForUser;
-//
+
 CREATE PROCEDURE ComputeAverageScoreForUser(
   IN user_id INT
 )
