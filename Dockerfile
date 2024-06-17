@@ -26,6 +26,14 @@ RUN apt-get install -y wget gnupg && \
     apt-get install -y mongodb-org && \
     rm -rf /var/lib/apt/lists/* # Clean up unnecessary files
 
+# Install Node.js and npm
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
+    apt-get install -y nodejs
+
+# Install Node.js dependencies
+COPY package.json package-lock.json ./
+RUN npm install
+
 # Set environment variables
 ENV PERSONAL_DATA_DB_USERNAME=root \
     PERSONAL_DATA_DB_PASSWORD=root \
