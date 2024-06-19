@@ -6,23 +6,22 @@ const url = require('url');
 
 
 const app = http.createServer((req, res) => {
-  res.setHeader('Content-Type', 'text/plain' );
+  res.setHeader('Content-Type', 'text/plain');
 
   if (req.url === '/') {
     res.end('Hello Holberton School!');
   } else if (req.url === `/students`) {
     // Get db file path from cmd line args
-    const queryObject = url.parse(req.url, true).query;
-    const filePath = queryObject.path;
-    console.log('Database file path:', filePath);
 
-    if (!filePath) {
+    const dbPath = process.argv[2];
+
+    if (!dbPath) {
       // Setting status code to show internal server error
       res.statusCode = 500;
       res.end('Error: Database file path not provided');
     } else {
       // Call function to get the list of students from CSV
-      countStudents(filePath)
+      countStudents(dbPath)
         .then((output) => {
           res.write('This is the list of our students');
           res.end(output);
