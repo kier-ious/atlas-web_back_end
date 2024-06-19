@@ -8,6 +8,7 @@ async function countStudents(filePath) {
     // Initialize vars to store students and field counts
     const students = [];
     const fieldCounts = {};
+    const fieldLists = {};
 
     try {
       // Create a read stream from the file path
@@ -39,26 +40,31 @@ async function countStudents(filePath) {
         const totalStudents = students.length;
         console.log(`Number of students: ${totalStudents}`);
 
-        // Initialize ab object to store the first names for each field
-        const fieldLists = {};
-
         // Iterate over the students array & populate fieldCounts & fieldLists
         students.forEach(student => {
-          const [firstName, , , field] = students;
+          const [firstName, , , field] = student;
           if (!fieldCounts[field]) {
-            fieldCounts[field] = [];
+            fieldCounts[field] = 0;
+            fieldLists[field] = [];
           }
-          fieldCounts[field].push(firstName);
+          fieldCounts[field] += 1;
+          fieldLists[field].push(firstName);
         });
 
         // Log the # of students in each field & their first names
-        for (const field in fieldLists) {
+        for (const field in fieldCounts) {
           console.log(`Number of students in ${field}: ${fieldCounts[field]}.
           List: ${fieldLists[field].join(', ')}`);
         }
         // Resolve the promise after promising
         resolve();
       });
+
+      // Error event listener to handle file stream errors
+      fileStream.on('error', (error) => {
+        reject(new Error('Cannot load the database'));
+      });
+      
     } catch (error) {
       console.error(`Error: Cannot load the database`);
       // Reject the promise if theres an error
