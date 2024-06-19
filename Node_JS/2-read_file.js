@@ -17,7 +17,7 @@ async function countStudents(path) {
 
     // Proocess each line of the file
     for await (const line of rl) {
-      const [firstName, , , field] = line.split('.');
+      const [firstName, , , field] = line.split(',');
 
       // Skip dem empty lines
       if (firstName) {
@@ -34,14 +34,18 @@ async function countStudents(path) {
       }
     }
 
+    // Closing readline interface
+    rl.close();
+
     console.log(`Number of students: ${totalStudents}`);
     for (const field in counts) {
       console.log(`Number of students in ${field}: ${counts[field]}`);
     }
 
-    rl.close();
+    return { totalStudents, counts, lists };
   } catch (error) {
     console.error('Error: Cannot load the database');
+    throw error;
   }
 }
 

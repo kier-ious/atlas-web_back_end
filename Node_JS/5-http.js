@@ -1,7 +1,8 @@
 const http = require('http');
-const { countStudents } = require('./3-read_file_async');
+const countStudents = require('./3-read_file_async');
 const host = 'localhost';
 const port = 1245;
+const url = require('url');
 
 
 const app = http.createServer((req, res) => {
@@ -9,9 +10,11 @@ const app = http.createServer((req, res) => {
 
   if (req.url === '/') {
     res.end('Hello Holberton School!');
-  } else if (req.url === '/students') {
+  } else if (req.url === `/students`) {
     // Get db file path from cmd line args
-    const filePath = process.argv[2];
+    const queryObject = url.parse(req.url, true).query;
+    const filePath = queryObject.path;
+    console.log('Database file path:', filePath);
 
     if (!filePath) {
       // Setting status code to show internal server error
@@ -21,12 +24,12 @@ const app = http.createServer((req, res) => {
       // Call function to get the list of students from CSV
       countStudents(filePath)
         .then((output) => {
-          res,wrote('This is the list of our students');
+          res.write('This is the list of our students');
           res.end(output);
         })
         .catch(error => {
           res.statusCode = 500;
-          res.end(`Error" ${error.message}`);
+          res.end(`Error: ${error.message}`);
         });
     }
   } else {
