@@ -30,6 +30,9 @@ RUN apt-get install -y wget gnupg && \
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
     apt-get install -y nodejs
 
+# Install Express dependencies
+RUN npm install express
+
 # Install Node.js dependencies
 COPY package.json package-lock.json ./
 RUN npm install
@@ -39,9 +42,6 @@ ENV PERSONAL_DATA_DB_USERNAME=root \
     PERSONAL_DATA_DB_PASSWORD=root \
     PERSONAL_DATA_DB_HOST=localhost \
     PERSONAL_DATA_DB_NAME=my_db
-
-# # Expose MongoDB port
-# EXPOSE 27017
 
 # Default command to start MongoDB service
 CMD ["mongod", "--bind_ip", "0.0.0.0"]
