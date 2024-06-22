@@ -8,16 +8,16 @@ describe('sendPaymentRequestToApi', () => {
   let calculateNumberSpy;
 
   beforeEach(() => {
-    calculateNumberSpy = sinon.spy(Utils, 'calulateNumber');
+    calculateNumberSpy = sinon.spy(Utils, 'calculateNumber');
   });
 
   afterEach(() => {
     calculateNumberSpy.restore();
   });
 
-  it('should call Utils.calculateNumber with SUM 100, 20', () => {
+  it('should call Utils.calculateNumber with SUM 100, 20',function () {
     sendPaymentRequestToApi(100, 20);
     expect(calculateNumberSpy.calledOnce).to.be.true;
-    expect(spy.calledOnceWithExactly('SUM', 100, 20)).to.be.true;
+    expect(calculateNumberSpy.calledOnceWithExactly('SUM', 100, 20)).to.be.true;
   });
 });
