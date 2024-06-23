@@ -37,17 +37,11 @@ RUN npm install express
 COPY package.json package-lock.json ./
 RUN npm install
 
-# Install Mocha, Chai, Sinon, and Request
-RUN npm install mocha chai sinon request --save-dev
-
 # Set environment variables
 ENV PERSONAL_DATA_DB_USERNAME=root \
     PERSONAL_DATA_DB_PASSWORD=root \
     PERSONAL_DATA_DB_HOST=localhost \
     PERSONAL_DATA_DB_NAME=my_db
-
-# Copy the application source code to the working directory
-COPY . .
 
 # Default command to start MongoDB service
 CMD ["mongod", "--bind_ip", "0.0.0.0"]

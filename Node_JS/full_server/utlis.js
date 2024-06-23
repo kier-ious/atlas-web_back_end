@@ -1,11 +1,11 @@
-const fs = require('fs').promises;
+const fs = require('fs');
 const readline = require('readline');
 
 
 async function readDatabase(filePath) {
     try {
       // Create a read stream from the file path
-      const data = await fs.readFile(filePath, 'utf-8');
+      const data = await fs.readDatabase(filePath, 'utf-8');
       // Create an interface for reading the stream line by line
       const rl = readline.createInterface({
         input: fileStream,
@@ -57,7 +57,9 @@ async function readDatabase(filePath) {
       });
 
     } catch (error) {
-      throw new Error(`Error: Cannot load the database`);
+      console.error(`Error: Cannot load the database`);
+      // Reject the promise if theres an error
+      reject(error);
     }
   };
 
