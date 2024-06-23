@@ -12,3 +12,5 @@ app.listen(port, () => {
 });
 
 module.exports = app;
+
+// adding a comment becaue I stopped the server
