@@ -1,5 +1,4 @@
 const { expect } = require('chai');
-const chai = require('chai');
 
 describe('Cart page', function() {
   it('Correct status code when :id is a number?', function(done) {
