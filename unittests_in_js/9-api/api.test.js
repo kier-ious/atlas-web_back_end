@@ -12,13 +12,13 @@ describe('Cart page', function() {
                 done();
             });
         });
-    });
 
-    it('should return 404 when :id is NOT a number', function(done) {
-        chai.request('http://localhost:7865/cart/hello', function (error, response) {
-            if (error) return done(error);
-            expect(response.statusCode).to.have.status(404);
-            done();
+        it('should return 404 when :id is NOT a number', function(done) {
+            request('http://localhost:7865/cart/hello', function (error, response) {
+                if (error) return done(error);
+                expect(response.statusCode).to.equal(404);
+                done();
+            });
         });
     });
 });
