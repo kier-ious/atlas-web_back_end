@@ -2,6 +2,9 @@ const request = require('request');
 const { expect } = require('chai');
 const app = require('./api.js');
 
+// chai.use(chaiHttp);
+// const { expect } = chai;
+
 describe('Cart page', function() {
     describe('GET /cart/:id', function() {
         it('should return 200 when :id is a number', function(done) {
