@@ -1,5 +1,6 @@
 const request = require('request');
 const { expect } = require('chai');
+const app = require('./api.js');
 
 describe('Cart page', function() {
     describe('GET /cart/:id', function() {

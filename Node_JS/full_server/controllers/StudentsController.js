@@ -1,6 +1,6 @@
-const { readDatabase } = require('../utlis');
+const { readDatabase } = require('../utils');
 
-class studentController {
+class StudentsController {
   static async getAllStudents(req, res) {
     try {
       const data = await readDatabase('./database.csv');
@@ -14,7 +14,7 @@ class studentController {
         students[field].push(`${firstname} ${lastname}`);
       });
 
-      let response = 'This is the list of our students';
+      let response = 'This is the list of our students\n';
       for (const [field, name] of Object.entries(students)) {
         response += `Number of students in ${filed}: ${names.length}.
         List: ${names.join(', ')}`;
@@ -45,4 +45,4 @@ class studentController {
   }
 }
 
-module.exports = studentController;
+module.exports = StudentsController;
