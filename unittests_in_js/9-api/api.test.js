@@ -7,7 +7,7 @@ const app = require('./api.js');
 
 describe('Payment System', () => {
     describe('GET /', () => {
-        it('should return 200 and welcome message', (done) => {
+        it('Returns "Welcome to the payment system"', (done) => {
             request('http://localhost:7865/', (error, response, body) => {
                 if (error) return done(error);
                 expect(response.statusCode).to.equal(200);
@@ -18,7 +18,7 @@ describe('Payment System', () => {
     });
 
     describe('GET /cart/:id', function() {
-        it('should return 200 when :id is a number', (done) => {
+        it('Returns Payment methods for cart number', (done) => {
             const id = 12;
             request(`http://localhost:7865/cart/${id}`, (error, response, body) => {
                 if (error) return done(error);
