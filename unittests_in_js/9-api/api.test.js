@@ -36,3 +36,4 @@ describe('Cart page', function() {
         });
     });
 });
+// adding comment
