@@ -17,7 +17,7 @@ describe('Payment System', () => {
         });
     });
 
-    describe('GET /cart/:id', function() {
+    describe('GET /cart/:id', () => {
         it('Returns Payment methods for cart number', (done) => {
             const id = 12;
             request(`http://localhost:7865/cart/${id}`, (error, response, body) => {
