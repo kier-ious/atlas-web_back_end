@@ -7,7 +7,7 @@ const app = require('./api.js');
 describe('Index page', function() {
     it('Correct status code?', function(done) {
         request('http://localhost:7865/', function (error, response) {
-            if (error) return done(error);
+            // if (error) return done(error);
             expect(response.statusCode).to.equal(200);
             done();
         });
@@ -15,7 +15,7 @@ describe('Index page', function() {
 
     it('Correct result?', function(done) {
         request('http://localhost:7865/', function (error, response, body) {
-            if (error) return done(error);
+            // if (error) return done(error);
             expect(body).to.equal('Welcome to the payment system');
             done();
         });
@@ -26,7 +26,7 @@ describe('Payment System', () => {
     describe('GET /', () => {
         it('Returns "Welcome to the payment system"', (done) => {
             request('http://localhost:7865/', (error, response, body) => {
-                if (error) return done(error);
+                // if (error) return done(error);
                 expect(response.statusCode).to.equal(200);
                 expect(body).to.equal('Welcome to the payment system');
                 done();
@@ -46,11 +46,9 @@ describe('GET /cart/:id', () => {
 
     it('Return 404 when :id is NOT a number', (done) => {
         request('http://localhost:7865/cart/hello', (error, response, body) => {
-            if (error) return done(error);
+            // if (error) return done(error);
             expect(response.statusCode).to.equal(404);
             done();
         });
     });
 });
-
-// adding comment
