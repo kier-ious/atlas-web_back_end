@@ -8,7 +8,7 @@ const app = require('./api.js');
 // const { expect } = chai;
 describe('Cart page', function() {
     it('Correct status code and result?', function(done) {
-        request('http://localhost:7865/', function (error, response, body) {
+        request('http://localhost:7865', function (error, response, body) {
             // if (error) return done(error);
             expect(response.statusCode).to.equal(200);
             expect(body).to.equal('Welcome to the payment system');

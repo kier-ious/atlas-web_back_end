@@ -26,6 +26,22 @@ RUN apt-get install -y wget gnupg && \
     apt-get install -y mongodb-org && \
     rm -rf /var/lib/apt/lists/* # Clean up unnecessary files
 
+# Install prerequisites
+RUN apt-get update && \
+    apt-get install -y wget curl git gcc make && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install Redis
+RUN wget http://download.redis.io/releases/redis-6.0.10.tar.gz && \
+    tar xzf redis-6.0.10.tar.gz && \
+    cd redis-6.0.10 && \
+    make && \
+    make install && \
+    cd .. && \
+    rm -rf redis-6.0.10* && \
+    mkdir /var/redis && \
+    chmod -R 777 /var/redis
+
 # Install Node.js and npm
 RUN curl -fsSL https://deb.nodesource.com/setup_12.x | bash - && \
     apt-get install -y nodejs
