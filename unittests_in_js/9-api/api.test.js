@@ -1,5 +1,7 @@
+const chai = require('chai');
 const request = require('request');
-const { expect } = require('chai');
+const expect = chai.expect;
+// const { expect } = require('chai');
 const app = require('./api.js');
 
 // chai.use(chaiHttp);

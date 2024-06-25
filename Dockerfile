@@ -27,7 +27,7 @@ RUN apt-get install -y wget gnupg && \
     rm -rf /var/lib/apt/lists/* # Clean up unnecessary files
 
 # Install Node.js and npm
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
+RUN curl -fsSL https://deb.nodesource.com/setup_12.x | bash - && \
     apt-get install -y nodejs
 
 # Install Express dependencies
