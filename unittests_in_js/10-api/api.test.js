@@ -66,14 +66,14 @@ describe('Payment methods endpoint', () => {
 describe('Login endpoint', () => {
   describe('POST /login', () => {
       it('Returns welcome message with username', (done) => {
-          const userName = 'Betty';
+          const username = 'Betty';
           request.post({
               url: 'http://localhost:7865/login',
               json: true,
-              body: { userName }
+              body: { username }
           }, (error, response, body) => {
               expect(response.statusCode).to.equal(200);
-              expect(body).to.equal(`Welcome ${userName}`);
+              expect(body).to.equal(`Welcome ${username}`);
               done();
           });
       });
