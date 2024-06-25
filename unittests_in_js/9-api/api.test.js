@@ -6,23 +6,16 @@ const app = require('./api.js');
 
 // chai.use(chaiHttp);
 // const { expect } = chai;
-describe('Index page', function() {
-    it('Correct status code?', function(done) {
-        request('http://localhost:7865/', function (error, response) {
-            // if (error) return done(error);
-            expect(response.statusCode).to.equal(200);
-            done();
-        });
-    });
-
-    it('Correct result?', function(done) {
+describe('Cart page', function() {
+    it('Correct status code and result?', function(done) {
         request('http://localhost:7865/', function (error, response, body) {
             // if (error) return done(error);
+            expect(response.statusCode).to.equal(200);
             expect(body).to.equal('Welcome to the payment system');
             done();
         });
     });
-  });
+});
 
 describe('Payment System', () => {
     describe('GET /', () => {
