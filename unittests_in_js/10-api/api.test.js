@@ -63,19 +63,17 @@ describe('Payment methods endpoint', () => {
   });
 });
 
-describe('Login endpoint', () => {
-  describe('POST /login', () => {
-      it('Returns welcome message with username', (done) => {
-          const username = 'Betty';
-          request.post({
-              url: 'http://localhost:7865/login',
-              json: true,
-              body: { username }
-          }, (error, response, body) => {
-              expect(response.statusCode).to.equal(200);
-              expect(body).to.equal(`Welcome ${username}`);
-              done();
-          });
+describe('Login endpoint POST /login', () => {
+  it('Returns welcome message with userName', (done) => {
+      const userName = 'Betty';
+      request.post({
+          url: 'http://localhost:7865/login',
+          json: true,
+          body: { userName }
+      }, (error, response, body) => {
+          expect(response.statusCode).to.equal(200);
+          expect(body).to.equal(`Welcome ${userName}`);
+          done();
       });
   });
 });
